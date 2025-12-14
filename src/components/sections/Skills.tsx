@@ -1,154 +1,82 @@
-import { Code2, Laptop, Database, Wrench, Brain, TestTube, Bot, Sparkles, Network, Cpu } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import { Code2, Brain, TestTube, Shield, Database, Wrench } from "lucide-react";
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 const skillCategories = [
   {
-    title: "AI & Machine Learning",
+    title: "GenAI / AI / LLM",
     icon: <Brain className="w-5 h-5" />,
     skills: [
-      "Machine Learning Algorithms",
-      "Neural Networks",
-      "Predictive Modeling",
-      "Anomaly Detection",
-      "Feature Engineering",
-      "Model Training & Evaluation",
-      "AutoML",
-      "Deep Learning"
-    ]
+      "LLM integration (OpenAI, Anthropic, Gemini)",
+      "RAG (Retrieval-Augmented Generation)",
+      "LangChain / LlamaIndex",
+      "Vector Databases (Pinecone, Weaviate)",
+      "Prompt Engineering & Eval",
+      "AI Agents & Chatbots",
+    ],
   },
   {
-    title: "AI Tools & Platforms",
-    icon: <Bot className="w-5 h-5" />,
-    skills: [
-      "OpenAI (ChatGPT, GPT-3.5, GPT-4)",
-      "Google Gemini AI",
-      "Claude AI",
-      "Midjourney",
-      "Cursor AI",
-      "V0.dev/bolt.new",
-      "Ollama",
-      "Hugging Face",
-      " Prompt Design",
-      "Prompt Design & Optimization (Zero-shot Few-shot, ReAct, CoT) ",
-      
-      "Cohere APIs",
-      " Fine-tuning and Evaluation of LLMs",
-      "Token Usage Optimization",
-      "Anthropic Claude",
-      "Mistral"
-
-    ]
-  },
-  {
-    title: "Natural Language Processing",
-    icon: <Sparkles className="w-5 h-5" />,
-    skills: [
-      "Sentiment Analysis",
-      "Text Classification",
-      "NLP Preprocessing",
-      "Natural Language Understanding (NLU)",
-      "LLM Integration",
-      "Named Entity Recognition",
-      "Text Generation",
-      "Language Understanding",
-      "Transformer Models"
-    ]
-  },
-  {
-    title: "AI Frameworks & Libraries",
-    icon: <Network className="w-5 h-5" />,
-    skills: [
-      "TensorFlow",
-      "PyTorch",
-      "Scikit-learn",
-      "Keras",
-      "NLTK",
-      "spaCy",
-      "FastAI",
-      "Pandas"
-    ]
-  },
-  {
-    title: "AI-Driven Testing",
-    icon: <Cpu className="w-5 h-5" />,
-    skills: [
-      "AI-Driven Testing Optimization",
-      "Automated Test Generation",
-      "Smart Test Selection",
-      "Predictive Test Analytics",
-      "Visual Testing AI",
-      "Test Data Generation",
-      "Intelligent Test Maintenance",
-      "Performance Testing AI"
-    ]
-  },
-  {
-    title: "Programming Languages & Frameworks",
+    title: "Full-Stack Development",
     icon: <Code2 className="w-5 h-5" />,
     skills: [
-      "Python",
-      "JavaScript",
-      "Pytest",
-      "Selenium",
-      "Cypress",
-      "Appium",
-      "NumPy",
-      "JUnit",
-      "BDD Framework",
-      "Behave",
-      "RestAPI"
-    ]
+      "React.js / Next.js",
+      "TypeScript / JavaScript",
+      "Node.js / Express",
+      "Python (FastAPI, Flask)",
+      "Tailwind CSS / ShadcnUI",
+      "RESTful APIs & GraphQL",
+    ],
   },
   {
-    title: "Cloud & Infrastructure",
-    icon: <Database className="w-5 h-5" />,
-    skills: [
-      "AWS",
-      "Docker",
-      "Kubernetes",
-      "CI/CD",
-      "MLOps",
-      "Cloud Computing",
-      "Microservices",
-      "Serverless"
-    ]
-  },
-  {
-    title: "Tools & Platforms",
-    icon: <Wrench className="w-5 h-5" />,
-    skills: [
-      "Jira",
-      "Git & Github",
-      "Figma",
-      "Trello",
-      "Postman",
-      "Test Rail",
-      "Allure Report",
-      "JMeter",
-      "Katalon Studio"
-    ]
-  },
-  {
-    title: "Testing Methodologies",
+    title: "QA Automation & Testing",
     icon: <TestTube className="w-5 h-5" />,
     skills: [
-      "Functional Testing",
-      "System Testing",
-      "Integration Testing",
-      "Acceptance Testing",
-      "Smoke Testing",
-      "Regression Testing",
-      "API Testing",
-      "Performance Testing",
-      "Security Testing",
-      "Mobile Testing",
-      "Web Testing",
-      "User Acceptance Testing (UAT)"
-    ]
-  }
+      "Selenium WebDriver / Grid",
+      "Cypress / Playwright",
+      "Appium (Mobile Testing)",
+      "PyTest / Jest / JUnit",
+      "API Testing (Postman)",
+      "BDD (Cucumber/Gherkin)",
+    ],
+  },
+  {
+    title: "Performance & Security",
+    icon: <Shield className="w-5 h-5" />,
+    skills: [
+      "JMeter / K6 / Gatling",
+      "OWASP ZAP / Burp Suite",
+      "Lighthouse / Web Vitals",
+      "Load & Stress Testing",
+      "Auth0 / NextAuth / JWT",
+      "Security Compliance (SOC2)",
+    ],
+  },
+  {
+    title: "Data & Storage",
+    icon: <Database className="w-5 h-5" />,
+    skills: [
+      "PostgreSQL / MySQL",
+      "MongoDB / NoSQL",
+      "Redis / Caching",
+      "AWS S3 / Cloud Storage",
+      "Firebase / Supabase",
+      "Prisma / Drizzle ORM",
+    ],
+  },
+  {
+    title: "DevOps & Tools",
+    icon: <Wrench className="w-5 h-5" />,
+    skills: [
+      "Docker / Kubernetes",
+      "AWS (EC2, Lambda, S3)",
+      "CI/CD (GitHub Actions)",
+      "Terraform / IaC",
+      "Linux / Bash Scripting",
+      "Vercel / Netlify",
+    ],
+  },
 ];
 
 const SkillCard = motion(Card);
@@ -163,7 +91,7 @@ export function Skills() {
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillCategories.map((category, categoryIndex) => (
-          <SkillCard 
+          <SkillCard
             key={category.title}
             className={cn(
               "p-6 relative overflow-hidden",
@@ -179,15 +107,15 @@ export function Skills() {
               y: -5,
               transition: {
                 duration: 0.3,
-                ease: 'easeInOut',
+                ease: "easeInOut",
               },
             }}
           >
-            <motion.div 
+            <motion.div
               className="flex items-center gap-2 mb-4"
               whileHover={{ scale: 1.02 }}
             >
-              <motion.div 
+              <motion.div
                 className="p-2 rounded-lg bg-primary/10"
                 whileHover={{
                   rotate: [0, -10, 10, -5, 5, 0],
@@ -209,7 +137,9 @@ export function Skills() {
                   className={cn(
                     "animate-fade-in opacity-0 cursor-default relative overflow-hidden",
                     "before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#FF6B6B]/10 before:via-[#4ECDC4]/10 before:to-[#45B7D1]/10 before:opacity-0 before:transition-all before:duration-300 hover:before:opacity-100",
-                    `[animation-delay:${(categoryIndex * 150) + (skillIndex * 50)}ms]`
+                    `[animation-delay:${
+                      categoryIndex * 150 + skillIndex * 50
+                    }ms]`
                   )}
                   initial={false}
                   whileHover={{
@@ -217,7 +147,7 @@ export function Skills() {
                     rotate: 2,
                     transition: {
                       duration: 0.3,
-                      ease: 'easeInOut',
+                      ease: "easeInOut",
                     },
                   }}
                 >

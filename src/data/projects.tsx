@@ -1,220 +1,179 @@
-import { Store, Shield, Building2, ShoppingCart, Terminal, CreditCard, Phone, Hotel, UserCheck, MessageSquare } from 'lucide-react';
+import {
+  GraduationCap,
+  Receipt,
+  ShoppingCart,
+  ShoppingBag,
+  CreditCard,
+  Smartphone,
+  Hotel,
+  Shield,
+  Truck,
+  Figma,
+  Bot,
+  Chrome,
+} from "lucide-react";
 
-export const projects = [
+export interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  category: "dev" | "test";
+  links: {
+    demo: string;
+    github: string;
+  };
+  icon?: React.ReactNode;
+}
+
+export const projects: Project[] = [
+  // --- Development Projects ---
   {
-    title: "E-commerce Testing Suite",
-    description: "Developed comprehensive testing framework for a large-scale e-commerce platform handling 100K+ daily transactions. Implemented automated tests for payment processing, inventory management, and user journey flows.",
-    tags: ["Selenium", "Python", "API Testing", "Performance Testing", "Security"],
-    icon: <Store className="w-6 h-6" />,
-    highlights: [
-      "Reduced test execution time by 70%",
-      "Automated 200+ test cases",
-      "Improved payment gateway reliability"
-    ],
-    fullDescription: `A comprehensive testing framework designed for a high-traffic e-commerce platform processing over 100,000 daily transactions. The project focused on ensuring seamless user experiences and robust system performance.
+    title: "GenAI Chatbot Platform",
+    description:
+      "Enterprise-grade chatbot solution using OpenAI/Anthropic APIs with RAG for custom knowledge bases.",
+    tags: ["Next.js", "OpenAI API", "Pinecone", "Python"],
+    category: "dev",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <Bot className="w-8 h-8 text-primary" />,
+  },
+  {
+    title: "LinkedIn AI Assistant",
+    description:
+      "Chrome extension that uses local LLMs to summarize posts and generate smart replies for LinkedIn networking.",
+    tags: ["JavaScript", "Chrome API", "Ollama", "React"],
+    category: "dev",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <Chrome className="w-8 h-8 text-blue-500" />,
+  },
+  {
+    title: "FeedKoa AgroKart",
+    description:
+      "Agri-tech platform featuring a comprehensive internal ERP & Admin panel for supply chain management. (Admin restricted)",
+    tags: ["React", "Node.js", "ERP", "AgriTech"],
+    category: "dev",
+    links: {
+      demo: "https://feedkoagrokart.in/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <ShoppingCart className="w-8 h-8 text-green-600" />,
+  },
+  {
+    title: "Full-Stack eCommerce",
+    description:
+      "Modern eCommerce solution with a dedicated, feature-rich Admin Dashboard for inventory and order management.",
+    tags: ["Next.js", "Tailwind", "PostgreSQL", "Stripe"],
+    category: "dev",
+    links: {
+      demo: "https://bablooqa-ecommercepr-rdnh.bolt.host/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <ShoppingBag className="w-8 h-8 text-purple-600" />,
+  },
+  {
+    title: "GoSetle Invoicing",
+    description:
+      "SaaS invoicing platform enabling small businesses to generate quotes, track payments, and manage clients.",
+    tags: ["React", "SaaS", "FinTech", "Automation"],
+    category: "dev",
+    links: {
+      demo: "https://gosetle.com/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <Receipt className="w-8 h-8 text-blue-500" />,
+  },
+  {
+    title: "EngineerOnRoad",
+    description:
+      "Service marketplace connecting engineers with clients. Includes internal admin for booking management. (Admin restricted)",
+    tags: ["MERN Stack", "Marketplace", "Admin Panel"],
+    category: "dev",
+    links: {
+      demo: "http://engineeronroad.com/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <Truck className="w-8 h-8 text-orange-500" />,
+  },
+  {
+    title: "Egunas LMS",
+    description:
+      "EdTech platform with Learning Management System, Tutor Class Scheduling, and Student Progress tracking. (Admin restricted)",
+    tags: ["LMS", "Live Streaming", "EdTech", "React"],
+    category: "dev",
+    links: {
+      demo: "https://egunas.com/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <GraduationCap className="w-8 h-8 text-yellow-500" />,
+  },
+  {
+    title: "eCommerce UX Design",
+    description:
+      "High-fidelity Figma prototype demonstrating the complete customer journey.",
+    tags: ["Figma", "UI/UX", "Prototyping", "eCommerce"],
+    category: "dev",
+    links: {
+      demo: "https://noodle-clock-41349274.figma.site/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <Figma className="w-8 h-8 text-pink-500" />,
+  },
+  {
+    title: "Modern Admin Panel UX",
+    description:
+      "Comprehensive Admin Dashboard prototype in Figma, covering inventory, analytics, and user management.",
+    tags: ["Figma", "Admin Dashboard", "UI/UX"],
+    category: "dev",
+    links: {
+      demo: "https://vest-wreath-67006285.figma.site/",
+      github: "https://github.com/bablooqa",
+    },
+    icon: <Figma className="w-8 h-8 text-cyan-500" />,
+  },
 
-Key Achievements:
-• Implemented end-to-end automated testing covering critical user journeys
-• Developed performance testing scripts to handle peak load scenarios
-• Created security testing protocols for payment processing
-• Integrated continuous testing pipeline with CI/CD workflow
-
-Technical Implementation:
-• Selenium WebDriver for UI automation
-• Python scripts for API testing
-• JMeter for performance testing
-• Custom reporting dashboard for real-time monitoring`,
-    challenges: [
-      "Handling complex payment gateway integrations",
-      "Managing test data across multiple environments",
-      "Optimizing test execution for large test suites",
-      "Implementing parallel test execution"
-    ],
-    results: [
-      "70% reduction in test execution time",
-      "99.9% payment processing reliability",
-      "50% reduction in production bugs",
-      "Improved developer productivity"
-    ]
+  // --- QA / Testing Projects ---
+  {
+    title: "E-commerce Automation Suite",
+    description:
+      "End-to-end test automation framework covering 500+ test cases for a high-traffic retail platform.",
+    tags: ["Selenium", "Java", "TestNG", "Jenkins"],
+    category: "test",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <ShoppingCart className="w-8 h-8 text-red-500" />,
   },
   {
     title: "POS System Testing",
-    description: "Led end-to-end testing of a modern Point of Sale system used by 500+ retail locations. Implemented automated testing for payment processing, inventory sync, and offline functionality.",
-    tags: ["Cypress", "API Testing", "Performance", "Offline Mode", "Payment Integration"],
-    icon: <CreditCard className="w-6 h-6" />,
-    highlights: [
-      "99.9% system uptime achieved",
-      "Reduced critical bugs by 85%",
-      "Automated offline mode testing"
-    ],
-    fullDescription: `Comprehensive testing solution for a modern Point of Sale system deployed across 500+ retail locations, handling complex scenarios including offline operations and real-time inventory management.
-
-Key Achievements:
-• Developed automated test suite for critical POS functions
-• Implemented robust offline mode testing strategy
-• Created performance benchmarks for transaction processing
-• Established monitoring for system reliability
-
-Technical Implementation:
-• Cypress for frontend testing
-• Custom API testing framework
-• Mock service worker for offline testing
-• Real-time monitoring dashboard`,
-    challenges: [
-      "Testing offline functionality",
-      "Simulating high-volume transactions",
-      "Cross-device compatibility",
-      "Real-time inventory sync testing"
-    ],
-    results: [
-      "85% reduction in critical bugs",
-      "99.9% system reliability",
-      "40% faster transaction processing",
-      "Successful deployment to 500+ locations"
-    ]
+    description:
+      "Comprehensive functional and performance testing for a cloud-based Point of Sale system.",
+    tags: ["Cypress", "JavaScript", "API Testing", "Jira"],
+    category: "test",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <CreditCard className="w-8 h-8 text-indigo-500" />,
   },
   {
-    title: "eCommerce Mobile App Testing",
-    description: "Spearheaded testing for a cross-platform mobile shopping app with 1M+ downloads. Implemented automated testing for user journeys, payment processing, and push notifications.",
-    tags: ["Appium", "Mobile Testing", "Cross-platform", "Performance"],
-    icon: <Phone className="w-6 h-6" />,
-    highlights: [
-      "Achieved 4.8/5 app store rating",
-      "Reduced crash rate by 95%",
-      "Automated cross-platform testing"
-    ],
-    fullDescription: `End-to-end testing solution for a high-traffic mobile shopping application available on iOS and Android, focusing on user experience and app stability.
-
-Key Achievements:
-• Implemented cross-platform automated testing
-• Developed performance testing framework
-• Created automated push notification testing
-• Established CI/CD pipeline for mobile testing
-
-Technical Implementation:
-• Appium for mobile automation
-• Custom framework for push notification testing
-• Performance monitoring tools
-• Cross-platform compatibility testing`,
-    challenges: [
-      "Cross-platform compatibility",
-      "Push notification testing",
-      "Network condition simulation",
-      "Device fragmentation"
-    ],
-    results: [
-      "95% reduction in crash rate",
-      "4.8/5 average app store rating",
-      "60% faster test execution",
-      "Successful launch in 10 countries"
-    ]
+    title: "Mobile App QA",
+    description:
+      "Automated mobile testing using Appium for a fintech application, reducing regression time by 60%.",
+    tags: ["Appium", "Java", "Android", "iOS"],
+    category: "test",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <Smartphone className="w-8 h-8 text-pink-500" />,
   },
   {
-    title: "Hotel Booking Services",
-    description: "Developed testing framework for a hotel booking platform processing 50K+ bookings daily. Implemented automated testing for reservation system, payment processing, and booking management.",
-    tags: ["Selenium", "API Testing", "Load Testing", "Booking Engine"],
-    icon: <Hotel className="w-6 h-6" />,
-    highlights: [
-      "Zero booking conflicts achieved",
-      "Improved system reliability by 90%",
-      "Automated booking engine testing"
-    ],
-    fullDescription: `Comprehensive testing solution for a high-volume hotel booking platform, ensuring reliable reservations and payment processing across multiple hotel chains.
-
-Key Achievements:
-• Automated end-to-end booking flow testing
-• Implemented concurrent booking testing
-• Developed payment gateway integration tests
-• Created availability calendar testing suite
-
-Technical Implementation:
-• Selenium for UI automation
-• Custom API testing framework
-• Load testing with JMeter
-• Real-time availability testing`,
-    challenges: [
-      "Complex booking logic testing",
-      "Multiple payment gateway integration",
-      "Real-time availability updates",
-      "Concurrent booking handling"
-    ],
-    results: [
-      "Zero booking conflicts",
-      "90% improvement in system reliability",
-      "75% reduction in payment failures",
-      "Successful integration with 100+ hotels"
-    ]
+    title: "Hotel Booking API Tests",
+    description:
+      "Rigorous API testing suite using REST Assured to validate booking flows and payment gateways.",
+    tags: ["REST Assured", "Postman", "Java", "CI/CD"],
+    category: "test",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <Hotel className="w-8 h-8 text-yellow-500" />,
   },
   {
-    title: "KYC/ReKYC System",
-    description: "Led testing for a digital KYC verification system processing 10K+ verifications daily. Implemented automated testing for document verification, face recognition, and compliance checks.",
-    tags: ["Python", "Security Testing", "Compliance", "OCR Testing"],
-    icon: <UserCheck className="w-6 h-6" />,
-    highlights: [
-      "99.9% verification accuracy",
-      "Reduced processing time by 80%",
-      "Automated compliance testing"
-    ],
-    fullDescription: `End-to-end testing solution for a digital KYC verification system, ensuring accurate document verification and regulatory compliance.
-
-Key Achievements:
-• Automated document verification testing
-• Implemented face recognition testing
-• Developed compliance check automation
-• Created security testing framework
-
-Technical Implementation:
-• Python for automation
-• OCR testing framework
-• Face recognition testing tools
-• Compliance verification suite`,
-    challenges: [
-      "Complex document verification",
-      "Biometric data testing",
-      "Regulatory compliance testing",
-      "Security protocol verification"
-    ],
-    results: [
-      "99.9% verification accuracy",
-      "80% reduction in processing time",
-      "Zero compliance violations",
-      "Successful deployment in 5 countries"
-    ]
+    title: "KYC System Validation",
+    description:
+      "Security and compliance testing for a banking KYC module, ensuring data privacy.",
+    tags: ["Security Testing", "SQL", "Manual Testing", "Auditing"],
+    category: "test",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <Shield className="w-8 h-8 text-cyan-500" />,
   },
-  {
-    title: "Chatbot Application",
-    description: "Developed testing framework for an AI-powered customer service chatbot handling 100K+ conversations daily. Implemented automated testing for conversation flows, intent recognition, and integration testing.",
-    tags: ["API Testing", "NLP Testing", "Performance", "Integration"],
-    icon: <MessageSquare className="w-6 h-6" />,
-    highlights: [
-      "95% intent recognition accuracy",
-      "Reduced response time by 60%",
-      "Automated conversation testing"
-    ],
-    fullDescription: `Comprehensive testing solution for an AI-powered chatbot system, ensuring accurate intent recognition and natural conversation flows.
-
-Key Achievements:
-• Automated conversation flow testing
-• Implemented NLP accuracy testing
-• Developed performance benchmarking
-• Created integration testing suite
-
-Technical Implementation:
-• Custom API testing framework
-• NLP testing tools
-• Performance monitoring
-• Integration testing automation`,
-    challenges: [
-      "Complex conversation flows",
-      "Natural language processing",
-      "Multi-language support",
-      "Integration with multiple platforms"
-    ],
-    results: [
-      "95% intent recognition accuracy",
-      "60% faster response time",
-      "Support for 10+ languages",
-      "Successful handling of 100K+ daily conversations"
-    ]
-  }
 ];
