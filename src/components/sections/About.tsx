@@ -1,283 +1,467 @@
-import { useEffect, useState, useRef } from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, ChevronRight, Brain, Sparkles, Bot, Code2, Cpu, Network, Download, Calendar, Star, Users, Trophy, Clock, MessageSquare, Zap, Lightbulb } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useRef } from "react";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { cn } from '@/lib/utils';
+  ArrowRight,
+  Terminal,
+  Shield,
+  Code2,
+  Database,
+  Brain,
+  Sparkles,
+  Layers,
+  Search,
+  Cpu,
+  Bot,
+  Rocket,
+  MousePointer2,
+} from "lucide-react";
 
-export function About() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
-  const [currentSpecialization, setCurrentSpecialization] = useState(0);
-  const heroRef = useRef<HTMLDivElement>(null);
+interface AboutProps {
+  onOpenWizard?: () => void;
+}
 
-  const specializations = [
-    {
-      icon: <Bot className="w-6 h-6" />,
-      title: "AI-Driven Testing",
-      description: "Leveraging AI/ML for intelligent test automation and optimization"
-    },
-    {
-      icon: <MessageSquare className="w-6 h-6" />,
-      title: "Prompt Engineering",
-      description: "Expert in crafting precise prompts for AI models and LLMs"
-    },
-    {
-      icon: <Code2 className="w-6 h-6" />,
-      title: "QA Automation",
-      description: "End-to-end test automation with modern frameworks"
-    }
-  ];
+// TechPill removed
+export function About({ onOpenWizard }: AboutProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+  // Parallax removed
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: React.MouseEvent) {
+    let { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSpecialization((prev) => (prev + 1) % specializations.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const parallaxStyle = (depth: number) => ({
-    transform: `translateY(${scrollY * depth}px)`,
-  });
-
-  const highlights = [
-    { icon: <Star className="w-5 h-5" />, text: "5+ Years of QA Excellence" },
-    { icon: <Users className="w-5 h-5" />, text: "Worked with 5+ Global Clients" },
-    { icon: <Trophy className="w-5 h-5" />, text: "99.9% Bug Detection Rate" },
-    { icon: <Clock className="w-5 h-5" />, text: "70% Faster Test Execution" }
-  ];
-
-  const promptSkills = [
-    { icon: <Zap className="w-4 h-4" />, text: "Zero-shot & Few-shot Learning" },
-    { icon: <Brain className="w-4 h-4" />, text: "Chain-of-Thought Prompting" },
-    { icon: <Lightbulb className="w-4 h-4" />, text: "ReAct Framework Expert" }
-  ];
+  const scrollToProjects = () => {
+    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <>
-      {isLoading && (
-        <div className="loading-overlay flex items-center justify-center">
-          <div className="loading-spinner" />
-        </div>
-      )}
+    <section
+      ref={containerRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-12 md:pt-16 transition-colors duration-500"
+      style={{ backgroundColor: "hsl(var(--hero-bg))" }}
+      onMouseMove={handleMouseMove}
+    >
+      {/* Dynamic Background Grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div
+          className="absolute inset-0 bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_100%)] opacity-20"
+          style={{
+            backgroundImage: `linear-gradient(to right, hsl(var(--hero-grid-color)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--hero-grid-color)) 1px, transparent 1px)`,
+          }}
+        />
 
-      <div ref={heroRef} className="min-h-screen relative overflow-hidden bg-gradient-to-b from-background via-background to-secondary">
-        {/* Tech Background Grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-        
-        {/* Glowing Orbs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-[20%] left-[10%] w-[300px] h-[300px] bg-gradient-to-r from-primary/20 to-transparent rounded-full blur-[80px] animate-pulse" />
-          <div className="absolute bottom-[30%] right-[15%] w-[250px] h-[250px] bg-gradient-to-l from-[#7047ff]/20 to-transparent rounded-full blur-[60px] animate-pulse delay-700" />
-        </div>
+        {/* Mouse Follower Spotlight */}
+        <motion.div
+          className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+          style={{
+            background: useMotionTemplate`
+              radial-gradient(
+                650px circle at ${mouseX}px ${mouseY}px,
+                hsl(var(--accent-glow)),
+                transparent 80%
+              )
+            `,
+          }}
+        />
+      </div>
 
-        {/* Floating AI Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="parallax-layer absolute top-1/4 left-1/4" style={parallaxStyle(0.2)}>
-            <Brain className="w-16 h-16 text-primary/20 floating-element" />
-          </div>
-          <div className="parallax-layer absolute top-1/3 right-1/4" style={parallaxStyle(0.3)}>
-            <Sparkles className="w-12 h-12 text-primary/30 floating-element" />
-          </div>
-          <div className="parallax-layer absolute bottom-1/4 left-1/3" style={parallaxStyle(0.1)}>
-            <Bot className="w-20 h-20 text-primary/20 floating-element" />
-          </div>
-          <div className="parallax-layer absolute top-1/2 right-1/3" style={parallaxStyle(0.15)}>
-            <Cpu className="w-14 h-14 text-[#7047ff]/30 floating-element" />
-          </div>
-          <div className="parallax-layer absolute bottom-1/3 right-1/4" style={parallaxStyle(0.25)}>
-            <Code2 className="w-16 h-16 text-[#00b8ff]/20 floating-element" />
-          </div>
-          <div className="parallax-layer absolute top-2/3 left-1/4" style={parallaxStyle(0.2)}>
-            <Network className="w-18 h-18 text-[#00ff9d]/20 floating-element" />
-          </div>
-        </div>
+      <div className="container relative z-10 px-4 py-12 mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left: Content */}
+        <div className="text-left space-y-8 -mt-8 md:-mt-12">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            onClick={() =>
+              document
+                .getElementById("contact")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-sm font-medium transition-colors cursor-pointer hover:shadow-md"
+            style={{
+              backgroundColor: "hsl(var(--pill-bg))",
+              borderColor: "hsl(var(--pill-border))",
+              color: "hsl(var(--hero-text-primary))",
+            }}
+          >
+            <Sparkles className="w-4 h-4 text-cyan-500" />
+            <span>Available for New Projects</span>
+          </motion.button>
 
-        {/* Main Content */}
-        <div className="relative z-10 pt-32 pb-16 container mx-auto px-4">
-          <div className="hero-glow max-w-4xl mx-auto text-center">
-            <div className="relative mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-[#00b8ff]/10 to-[#7047ff]/10 blur-3xl" />
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 gradient-text opacity-0 animate-fade-in relative">
-                Babloo Kumar Sah
-              </h1>
+          {/* Animated Headline */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+              },
+            }}
+            className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight"
+            style={{ color: "hsl(var(--hero-text-primary))" }}
+          >
+            {/* Split text for staggered reveal */}
+            {[
+              "Building",
+              "Intelligent",
+              "GenAI",
+              "Products",
+              "&",
+              "Scalable",
+              "Systems",
+            ].map((word, i) => (
+              <motion.span
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                    transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] },
+                  },
+                }}
+                className={`inline-block mr-2 ${
+                  ["Intelligent", "GenAI", "Products"].includes(word)
+                    ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
+                    : ""
+                }`}
+              >
+                {word}{" "}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="text-xl md:text-2xl max-w-2xl leading-relaxed font-medium"
+            style={{ color: "hsl(var(--hero-text-secondary))" }}
+          >
+            Developing{" "}
+            <span
+              className="font-bold relative inline-block"
+              style={{ color: "hsl(var(--hero-text-primary))" }}
+            >
+              AI Copilots
+              <span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-500/50 rounded-full"></span>
+            </span>
+            ,{" "}
+            <span
+              className="font-bold relative inline-block"
+              style={{ color: "hsl(var(--hero-text-primary))" }}
+            >
+              SaaS Dashboards
+            </span>
+            , and{" "}
+            <span
+              className="font-bold relative inline-block"
+              style={{ color: "hsl(var(--hero-text-primary))" }}
+            >
+              Custom CRMs
+            </span>{" "}
+            with React, Next.js, Node.js, Python, and Modern LLMs{" "}
+            <span className="opacity-90 block mt-2 text-lg">
+              for startups, product teams, and agencies.
+            </span>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="flex items-start gap-3 p-4 rounded-xl border border-l-4 bg-muted/20 backdrop-blur-sm"
+            style={{
+              borderColor: "hsl(var(--glass-border))",
+              borderLeftColor: "hsl(var(--primary))",
+            }}
+          >
+            <div className="mt-1">
+              <Sparkles className="w-4 h-4 text-cyan-500" />
             </div>
-            
-            <p className="text-2xl text-muted-foreground mb-8 opacity-0 animate-fade-in [animation-delay:200ms] relative">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#00b8ff] to-[#7047ff]">
-                GenAI | Prompt Engineer | QA Automation Engineer | Quality Assurance | Test Engineer
-              </span>
+            <p
+              className="text-sm md:text-base italic"
+              style={{ color: "hsl(var(--hero-text-secondary))" }}
+            >
+              "Single owner from idea to production—designing, coding, and
+              shipping full‑stack & GenAI systems with QA baked in."
             </p>
+          </motion.div>
 
-            {/* Key Highlights */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 opacity-0 animate-fade-in [animation-delay:300ms]">
-              {highlights.map((highlight, index) => (
-                <div 
-                  key={index}
-                  className="bg-background/40 backdrop-blur-sm p-4 rounded-lg border border-primary/10 hover:border-primary/20 transition-all duration-300 transform hover:scale-105"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Button
+              size="lg"
+              onClick={onOpenWizard}
+              className="font-bold transition-all shadow-lg hover:shadow-xl hover:scale-105 border-0"
+              /* Removed manual bg-cyan-500 class to let Button default (gradient) take over */
+            >
+              Start a Risk-Free AI Build
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={scrollToProjects}
+              className="transition-colors hover:bg-secondary/50"
+              style={{
+                borderColor: "hsl(var(--pill-border))",
+                color: "hsl(var(--hero-text-primary))",
+              }}
+            >
+              Review Full-Stack & GenAI Work
+            </Button>
+          </motion.div>
+
+          {/* Mobile-only Tech Stack Display */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="lg:hidden flex flex-wrap gap-2 pt-4"
+          >
+            {[
+              { icon: Brain, label: "LLMs" },
+              { icon: Code2, label: "React/Next.js" },
+              { icon: Terminal, label: "Node.js" },
+              { icon: Search, label: "RAG" },
+              { icon: Shield, label: "QA Auto" },
+            ].map((tech, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-medium"
+                style={{
+                  backgroundColor: "hsl(var(--pill-bg))",
+                  borderColor: "hsl(var(--pill-border))",
+                  color: "hsl(var(--pill-text))",
+                }}
+              >
+                <tech.icon className="w-3 h-3" />
+                {tech.label}
+              </div>
+            ))}
+          </motion.div>
+
+          <div
+            className="flex items-center gap-6 pt-4 opacity-70 transition-all duration-500 hidden lg:flex"
+            style={{ color: "hsl(var(--hero-text-secondary))" }}
+          >
+            <div className="flex -space-x-3">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full border flex items-center justify-center text-xs font-bold"
+                  style={{
+                    backgroundColor: "hsl(var(--pill-bg))",
+                    borderColor: "hsl(var(--pill-border))",
+                    color: "hsl(var(--pill-text))",
+                  }}
                 >
-                  <div className="flex items-center justify-center mb-2 text-primary">
-                    {highlight.icon}
-                  </div>
-                  <p className="text-sm font-medium">{highlight.text}</p>
+                  {i === 1 && <Code2 className="w-4 h-4" />}
+                  {i === 2 && <Shield className="w-4 h-4" />}
+                  {i === 3 && <Brain className="w-4 h-4" />}
                 </div>
               ))}
             </div>
-
-            {/* Specializations Carousel */}
-            <div className="mb-12 relative">
-              <div className="bg-gradient-to-r from-background/80 via-background/60 to-background/80 backdrop-blur-sm rounded-lg p-8 border border-primary/10">
-                <div className="flex items-center justify-center mb-6 text-primary">
-                  {specializations[currentSpecialization].icon}
-                </div>
-                <h3 className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-primary via-[#00b8ff] to-[#7047ff]">
-                  {specializations[currentSpecialization].title}
-                </h3>
-                <p className="text-lg text-muted-foreground">
-                  {specializations[currentSpecialization].description}
-                </p>
-              </div>
-
-              {/* Prompt Engineering Skills */}
-              <div className="mt-6 grid grid-cols-3 gap-4">
-                {promptSkills.map((skill, index) => (
-                  <div key={index} className="flex items-center gap-2 justify-center text-sm text-muted-foreground bg-background/40 backdrop-blur-sm p-3 rounded-lg border border-primary/10">
-                    {skill.icon}
-                    <span>{skill.text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-4 mb-12 text-lg relative bg-gradient-to-r from-background/80 via-background/60 to-background/80 backdrop-blur-sm rounded-lg p-6 border border-primary/10">
-              <p className="typing-animation">🔍 Crafting precise prompts for AI models and automating complex test scenarios</p>
-              <p className="typing-animation-2">🚀 Reducing test execution time by 70% through AI-driven optimization</p>
-              <p className="typing-animation-3">💡 Expertise in LLMs, Chain-of-Thought prompting, and test automation frameworks</p>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in [animation-delay:400ms] relative">
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-all duration-300 border-primary/20 group"
-                onClick={() => window.location.href = 'mailto:bablooshahcse@gmail.com'}
+            <div className="text-sm font-mono">
+              <span
+                className="font-bold"
+                style={{ color: "hsl(var(--hero-text-primary))" }}
               >
-                <Mail className="w-4 h-4 group-hover:text-primary transition-colors" />
-                bablooshahcse@gmail.com
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-all duration-300 border-primary/20 group"
-                onClick={() => window.location.href = 'tel:+917888632265'}
-              >
-                <Phone className="w-4 h-4 group-hover:text-primary transition-colors" />
-                +91-7888632265
-              </Button>
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-all duration-300 border-primary/20 group"
-              >
-                <MapPin className="w-4 h-4 group-hover:text-primary transition-colors" />
-                New Delhi
-              </Button>
-            </div>
-
-            <div className="flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in [animation-delay:600ms] relative">
-              <Button
-                className="bg-gradient-to-r from-[#00ff9d] via-[#00b8ff] to-[#7047ff] hover:opacity-90 animate-pulse shadow-lg group relative overflow-hidden"
-                onClick={() => window.open('https://linktr.ee/bablookumarsah', '_blank')}
-              >
-                <span className="relative z-10 flex items-center">
-                  View Portfolio
-                  <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#00ff9d] via-[#00b8ff] to-[#7047ff] opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Button>
-
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      className="bg-gradient-to-r from-[#6a11cb] to-[#2575fc] hover:opacity-90 shadow-lg group relative overflow-hidden animate-bounce-slow"
-                      onClick={() => window.location.href = '/Resume/Babloo_ResumeGenAIPEQA_V5.pdf'}
-                    >
-                      <span className="relative z-10 flex items-center">
-                        Download Resume
-                        <Download className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
-                      </span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#6a11cb] to-[#2575fc] opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    Last Updated: March 15, 2025
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <Button
-                variant="outline"
-                className="gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-all duration-300 border-primary/20 group"
-                onClick={() => window.open('https://github.com/bablooqa', '_blank')}
-              >
-                <Github className="w-4 h-4 group-hover:text-primary transition-colors" />
-                GitHub
-              </Button>
-
-              <Button
-                variant="outline"
-                className="gap-2 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-all duration-300 border-primary/20 group"
-                onClick={() => window.open('https://linkedin.com/in/qababloo', '_blank')}
-              >
-                <Linkedin className="w-4 h-4 group-hover:text-primary transition-colors" />
-                LinkedIn
-              </Button>
-            </div>
-
-            {/* Quick Stats */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 animate-fade-in [animation-delay:800ms]">
-              <div className="bg-background/40 backdrop-blur-sm p-6 rounded-lg border border-primary/10 hover:border-primary/20 transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">Experience</h3>
-                <p className="text-4xl font-bold text-primary mb-2">5+</p>
-                <p className="text-sm text-muted-foreground">Years of Professional QA</p>
-              </div>
-              <div className="bg-background/40 backdrop-blur-sm p-6 rounded-lg border border-primary/10 hover:border-primary/20 transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">Projects</h3>
-                <p className="text-4xl font-bold text-primary mb-2">50+</p>
-                <p className="text-sm text-muted-foreground">Successfully Delivered</p>
-              </div>
-              <div className="bg-background/40 backdrop-blur-sm p-6 rounded-lg border border-primary/10 hover:border-primary/20 transition-all duration-300">
-                <h3 className="text-xl font-semibold mb-2">Test Cases</h3>
-                <p className="text-4xl font-bold text-primary mb-2">1000+</p>
-                <p className="text-sm text-muted-foreground">Automated & Maintained</p>
-              </div>
+                End-to-End
+              </span>{" "}
+              Engineering
             </div>
           </div>
         </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none" />
+        {/* Right: 3D Tech Visual - Redesigned */}
+        <div className="relative h-full w-full hidden lg:flex flex-col items-center justify-center perspective-1000 z-10">
+          {/* 1. Structured Tech Cluster */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="flex flex-wrap justify-center gap-3 max-w-md mx-auto mb-8"
+          >
+            {[
+              { icon: Brain, label: "LLMs", color: "text-purple-400" },
+              { icon: Bot, label: "AI/ML Engineer", color: "text-pink-400" },
+              { icon: Search, label: "RAG Systems", color: "text-blue-400" },
+              {
+                icon: Rocket,
+                label: "Google Antigravity",
+                color: "text-red-400",
+              },
+              { icon: Code2, label: "React/Next.js", color: "text-cyan-400" },
+              {
+                icon: MousePointer2,
+                label: "Cursor AI",
+                color: "text-indigo-300",
+              },
+              { icon: Terminal, label: "Node.js", color: "text-green-400" },
+              { icon: Database, label: "PostgreSQL", color: "text-indigo-400" },
+              {
+                icon: Database,
+                label: "MongoDB/Supabase",
+                color: "text-emerald-400",
+              },
+              { icon: Layers, label: "Docker", color: "text-blue-300" },
+              { icon: Shield, label: "Playwright", color: "text-orange-400" },
+              { icon: Cpu, label: "Python", color: "text-yellow-300" },
+            ].map((tech, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="flex items-center gap-2 px-4 py-2 rounded-full border bg-background/50 backdrop-blur-md shadow-sm transition-colors hover:border-primary/50"
+                style={{
+                  borderColor: "hsl(var(--pill-border))",
+                }}
+              >
+                <tech.icon className={`w-4 h-4 ${tech.color}`} />
+                <span
+                  className="text-xs font-semibold"
+                  style={{ color: "hsl(var(--hero-text-primary))" }}
+                >
+                  {tech.label}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* 2. AI Console Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, rotateX: 10 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              rotateX: 0,
+              y: [0, -10, 0], // Gentle float
+            }}
+            transition={{
+              duration: 0.8,
+              type: "spring",
+              y: {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+            }}
+            className="w-full max-w-[420px] rounded-xl border overflow-hidden shadow-2xl backdrop-blur-xl bg-background/40"
+            style={{
+              borderColor: "hsl(var(--glass-border))",
+              boxShadow: "0 20px 50px -12px rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            {/* Card Header */}
+            <div
+              className="flex items-center px-4 py-3 border-b bg-muted/20"
+              style={{ borderColor: "hsl(var(--glass-border))" }}
+            >
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                <div className="w-3 h-3 rounded-full bg-green-500/80" />
+              </div>
+              <div className="ml-auto flex items-center gap-2 opacity-50">
+                <Sparkles className="w-3 h-3" />
+                <span className="text-[10px] font-mono tracking-wider">
+                  AI_AGENT_V2
+                </span>
+              </div>
+            </div>
+
+            {/* Card Body */}
+            <div className="p-6 font-mono text-xs md:text-sm space-y-3 relative">
+              {/* Background Grid inside card for texture */}
+              <div
+                className="absolute inset-0 opacity-[0.03] bg-[size:10px_10px] pointer-events-none"
+                style={{
+                  backgroundImage: `radial-gradient(circle, currentColor 1px, transparent 1px)`,
+                }}
+              />
+
+              <div className="relative z-10 space-y-2">
+                <div className="flex gap-2 text-muted-foreground/60">
+                  <span>$</span>
+                  <span>init_sequence --verbose</span>
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                  className="flex gap-2"
+                  style={{ color: "hsl(var(--hero-text-secondary))" }}
+                >
+                  <span className="text-blue-500">ℹ</span>
+                  <span>Loading vectors... [1024 dims]</span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.8 }}
+                  className="flex gap-2"
+                  style={{ color: "hsl(var(--hero-text-secondary))" }}
+                >
+                  <span className="text-green-500">✓</span>
+                  <span>Connected to Knowledge Base</span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 2.5 }}
+                  className="flex gap-2"
+                  style={{ color: "hsl(var(--hero-text-secondary))" }}
+                >
+                  <span className="text-yellow-500">⚠</span>
+                  <span>Optimizing inference latency...</span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 3.2 }}
+                  className="pt-2 flex gap-2 font-bold"
+                  style={{ color: "hsl(var(--hero-text-primary))" }}
+                >
+                  <span className="text-cyan-500">➜</span>
+                  <span>System Ready. Waiting for prompt</span>
+                  <motion.span
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="w-2 h-4 bg-cyan-500 block"
+                  />
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Glow Behind */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full blur-[120px] -z-10 opacity-40 mix-blend-screen"
+            style={{ backgroundColor: "hsl(var(--accent-glow))" }}
+          />
+        </div>
       </div>
-    </>
+    </section>
   );
 }
