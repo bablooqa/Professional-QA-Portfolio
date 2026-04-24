@@ -121,7 +121,7 @@ export function About({ onOpenWizard }: AboutProps) {
                   },
                 }}
                 className={`inline-block mr-2 ${
-                  ["-Ready", "AI", "Products"].includes(word)
+                  ["Ready", "AI", "Products"].includes(word)
                     ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
                     : ""
                 }`}
