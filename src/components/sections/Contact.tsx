@@ -23,12 +23,12 @@ export function Contact() {
   return (
     <>
       {/* Animated gradient background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-700" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700" />
 
       {/* Moving gradient blobs */}
       <motion.div
         aria-hidden
-        className="absolute -z-10 top-0 -left-20 w-[32rem] h-[32rem] rounded-full bg-cyan-300/40 blur-3xl"
+        className="absolute top-0 -left-20 w-[32rem] h-[32rem] rounded-full bg-cyan-300/50 blur-3xl"
         animate={{
           x: [0, 80, 0],
           y: [0, 40, 0],
@@ -38,7 +38,7 @@ export function Contact() {
       />
       <motion.div
         aria-hidden
-        className="absolute -z-10 bottom-0 -right-20 w-[32rem] h-[32rem] rounded-full bg-blue-400/40 blur-3xl"
+        className="absolute bottom-0 -right-20 w-[32rem] h-[32rem] rounded-full bg-blue-400/50 blur-3xl"
         animate={{
           x: [0, -80, 0],
           y: [0, -40, 0],
@@ -48,7 +48,7 @@ export function Contact() {
       />
       <motion.div
         aria-hidden
-        className="absolute -z-10 top-1/2 left-1/2 w-[28rem] h-[28rem] rounded-full bg-sky-200/30 blur-3xl"
+        className="absolute top-1/2 left-1/2 w-[28rem] h-[28rem] rounded-full bg-sky-200/30 blur-3xl"
         animate={{
           x: [-100, 100, -100],
           y: [-50, 50, -50],
@@ -59,7 +59,7 @@ export function Contact() {
       {/* Subtle grid overlay for depth */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 opacity-[0.07]"
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
@@ -67,7 +67,7 @@ export function Contact() {
         }}
       />
 
-      <div className="container mx-auto px-4 relative">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

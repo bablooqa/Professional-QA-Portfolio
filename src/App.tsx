@@ -195,7 +195,7 @@ function App() {
           © 2024 Babloo Kumar Sah. All rights reserved.
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          © 2026 Designed and Developed by Babloo Kumar. All rights reserved.
+          Designed &amp; developed by Babloo Kumar · 2026
         </p>
       </motion.footer>
 
