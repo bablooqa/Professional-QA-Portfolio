@@ -161,7 +161,7 @@ export function About({ onOpenWizard }: AboutProps) {
             >
               Custom CRMs/ERP
             </span>{" "}
-            and scale with reliable systems{" "}
+            and scale with reliable systems.{" "}
             <span className="opacity-90 block mt-2 text-lg">
               for startups, product teams, and agencies.
             </span>
