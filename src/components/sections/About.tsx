@@ -1,21 +1,7 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Terminal,
-  Shield,
-  Code2,
-  Database,
-  Brain,
-  Sparkles,
-  Layers,
-  Search,
-  Cpu,
-  Bot,
-  Rocket,
-  MousePointer2,
-} from "lucide-react";
+import { ArrowRight, Terminal, Shield, Code as Code2, Database, Brain, Sparkles, Layers, Search, Cpu, Bot, Rocket, MousePointer2 } from "lucide-react";
 
 interface AboutProps {
   onOpenWizard?: () => void;
@@ -97,8 +83,8 @@ export function About({ onOpenWizard }: AboutProps) {
             <span>Available for New Projects</span>
           </motion.button>
 
-          {/* Animated Headline */}
-          <motion.div
+          {/* Animated Headline (H1 for primary SEO keyword targeting) */}
+          <motion.h1
             initial="hidden"
             animate="visible"
             variants={{
@@ -108,6 +94,7 @@ export function About({ onOpenWizard }: AboutProps) {
                 transition: { staggerChildren: 0.1, delayChildren: 0.2 },
               },
             }}
+            aria-label="AI Agent Developer and Full Stack Developer building intelligent GenAI products and scalable systems"
             className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight"
             style={{ color: "hsl(var(--hero-text-primary))" }}
           >
@@ -141,7 +128,7 @@ export function About({ onOpenWizard }: AboutProps) {
                 {word}{" "}
               </motion.span>
             ))}
-          </motion.div>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
