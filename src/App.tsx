@@ -176,7 +176,7 @@ function App() {
       </section>
       {/* Removed TryBeforeHire Section */}
       <section
-        className="py-16 bg-gradient-to-r from-[#6a11cb] to-[#2575fc]"
+        className="relative overflow-hidden py-20"
         id="contact"
         ref={sections.CONTACT}
         aria-label="Contact"
@@ -186,12 +186,17 @@ function App() {
 
       {/* Footer */}
       <motion.footer
-        className="py-8 text-center text-sm text-muted-foreground"
+        className="py-8 text-center border-t border-border/40"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <p>© 2024 Babloo Kumar Sah. All rights reserved.</p>
+        <p className="text-sm font-medium text-foreground">
+          © 2024 Babloo Kumar Sah. All rights reserved.
+        </p>
+        <p className="text-xs text-muted-foreground mt-1">
+          © 2026 Designed and Developed by Babloo Kumar. All rights reserved.
+        </p>
       </motion.footer>
 
       {/* Wizard Modal */}
