@@ -103,7 +103,7 @@ export function About({ onOpenWizard }: AboutProps) {
   "Build",
   "Production-Ready",
   "AI",
-  "AI Products",
+  "Products",
   "&",
   "Scalable",
   "Systems",
