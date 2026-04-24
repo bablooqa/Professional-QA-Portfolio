@@ -152,7 +152,7 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-            automate workflows, 
+            automate workflows
             </span>
             , and{" "}
             <span
