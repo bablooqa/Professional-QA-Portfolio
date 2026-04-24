@@ -192,10 +192,10 @@ function App() {
         transition={{ duration: 0.5 }}
       >
         <p className="text-sm font-medium text-foreground">
-          © 2024 Babloo Kumar Sah. All rights reserved.
+          © 2026 Babloo Kumar. All rights reserved.
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          Designed &amp; developed by Babloo Kumar · 2026
+          Designed &amp; developed by Babloo. v3.0.0
         </p>
       </motion.footer>
 
