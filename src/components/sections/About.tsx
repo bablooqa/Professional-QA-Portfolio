@@ -101,7 +101,9 @@ export function About({ onOpenWizard }: AboutProps) {
             {/* Split text for staggered reveal */}
             {[
   "Build",
-  "Production-Ready AI Products",
+  "Production-Ready",
+  "AI",
+  "Products",
   "&",
   "Scalable",
   "Systems",
