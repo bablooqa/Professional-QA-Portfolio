@@ -144,7 +144,7 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-               AI-powered products
+               AI-powered products, SaaS platforms
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-500/50 rounded-full"></span>
             </span>
             ,{" "}
