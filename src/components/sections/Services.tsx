@@ -1,6 +1,17 @@
 import { motion } from "framer-motion";
-import { Bot, Code as Code2, Database, Workflow, Layers, ShieldCheck, CircleCheck as CheckCircle2 } from "lucide-react";
+import {
+  Bot,
+  Code as Code2,
+  Database,
+  Workflow,
+  Layers,
+  ShieldCheck,
+  CircleCheck as CheckCircle2,
+  MessageCircle,
+} from "lucide-react";
 import { Card } from "@/components/ui/card";
+
+const WHATSAPP_NUMBER = "917888632265";
 
 type Service = {
   icon: React.ReactNode;
@@ -9,6 +20,7 @@ type Service = {
   features: string[];
   bestFor?: string;
   result?: string;
+  whatsappMessage: string;
 };
 
 const services: Service[] = [
@@ -23,6 +35,8 @@ const services: Service[] = [
       "Deployment-ready systems",
     ],
     bestFor: "Startups building AI products from scratch",
+    whatsappMessage:
+      "Hi Babloo, I want to build an AI-powered product (chatbot / SaaS / RAG system). Can we discuss requirements, timeline, and cost?",
   },
   {
     icon: <Database className="w-8 h-8 text-cyan-500" />,
@@ -35,6 +49,8 @@ const services: Service[] = [
       "Context-aware AI responses",
     ],
     result: "More accurate AI outputs grounded in real business data",
+    whatsappMessage:
+      "Hi Babloo, I'm interested in building a RAG-based AI system on top of my data / knowledge base. Can you help me with the implementation and share an estimate?",
   },
   {
     icon: <Workflow className="w-8 h-8 text-emerald-500" />,
@@ -47,6 +63,8 @@ const services: Service[] = [
       "Business process automation",
     ],
     result: "Save time, reduce cost, improve operations",
+    whatsappMessage:
+      "Hi Babloo, I want to automate workflows using AI (agents / APIs / integrations). Can we discuss how to implement this and the cost involved?",
   },
   {
     icon: <Layers className="w-8 h-8 text-blue-500" />,
@@ -59,6 +77,8 @@ const services: Service[] = [
       "Scalable backend architecture",
     ],
     bestFor: "Founders launching MVPs or scaling products",
+    whatsappMessage:
+      "Hi Babloo, I'm planning to build a SaaS platform with AI features. Can we discuss development, architecture, timeline, and pricing?",
   },
   {
     icon: <ShieldCheck className="w-8 h-8 text-amber-500" />,
@@ -71,6 +91,8 @@ const services: Service[] = [
       "Prompt reliability testing",
     ],
     result: "More stable, accurate, and production-ready AI systems",
+    whatsappMessage:
+      "Hi Babloo, I need help testing and evaluating my AI / LLM system for accuracy and reliability. Can we discuss your approach and pricing?",
   },
   {
     icon: <Code2 className="w-8 h-8 text-pink-500" />,
@@ -83,8 +105,17 @@ const services: Service[] = [
       "Cross-browser & mobile coverage",
     ],
     result: "Faster releases with fewer production defects",
+    whatsappMessage:
+      "Hi Babloo, I want to build a scalable automation testing framework for my application. Can you help with setup, strategy, and cost?",
   },
 ];
+
+function openWhatsApp(message: string) {
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    message
+  )}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
 
 export function Services() {
   return (
@@ -117,8 +148,20 @@ export function Services() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="p-6 h-full flex flex-col hover:shadow-lg transition-shadow border-primary/10 bg-card/50 backdrop-blur-sm">
-              <div className="mb-4 p-3 bg-secondary/50 rounded-lg w-fit">
+            <Card
+              role="button"
+              tabIndex={0}
+              onClick={() => openWhatsApp(service.whatsappMessage)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openWhatsApp(service.whatsappMessage);
+                }
+              }}
+              aria-label={`Discuss ${service.title} on WhatsApp`}
+              className="group p-6 h-full flex flex-col cursor-pointer border-primary/10 bg-card/50 backdrop-blur-sm transition-all hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              <div className="mb-4 p-3 bg-secondary/50 rounded-lg w-fit transition-colors group-hover:bg-primary/10">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -133,7 +176,7 @@ export function Services() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-auto pt-4 border-t border-primary/10">
+              <div className="mt-auto pt-4 border-t border-primary/10 space-y-3">
                 {service.bestFor && (
                   <p className="text-sm">
                     <span className="font-semibold text-primary">
@@ -152,6 +195,18 @@ export function Services() {
                     </span>
                   </p>
                 )}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openWhatsApp(service.whatsappMessage);
+                  }}
+                  className="w-full mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-sm px-4 py-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2"
+                  aria-label={`Discuss ${service.title} on WhatsApp`}
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Discuss on WhatsApp
+                </button>
               </div>
             </Card>
           </motion.div>
