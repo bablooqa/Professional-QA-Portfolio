@@ -108,6 +108,7 @@ export function About({ onOpenWizard }: AboutProps) {
   "&",
   "Scalable",
   "Systems",
+   "With QA"
 ].map((word, i) => (
               <motion.span
                 key={i}
