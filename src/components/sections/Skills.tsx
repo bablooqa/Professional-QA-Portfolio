@@ -1,4 +1,4 @@
-import { Code2, Brain, TestTube, Shield, Database, Wrench } from "lucide-react";
+import { Code as Code2, Brain, TestTube, Shield, Database, Wrench, Rocket } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,36 +9,87 @@ const skillCategories = [
     title: "GenAI / AI / LLM",
     icon: <Brain className="w-5 h-5" />,
     skills: [
-      "LLM integration (OpenAI, Anthropic, Gemini)",
+      "LLM Application Development",
       "RAG (Retrieval-Augmented Generation)",
+      "AI Agents & Automation",
+      "Prompt Engineering & Optimization",
+      "LLM Evaluation & Testing",
+      "OpenAI, Anthropic, Gemini APIs",
       "LangChain / LlamaIndex",
-      "Vector Databases (Pinecone, Weaviate)",
-      "Prompt Engineering & Eval",
-      "AI Agents & Chatbots",
+      "Vector Databases (Pinecone, Weaviate, FAISS)",
+      "Multimodal AI (Text, Voice, Image)",
     ],
   },
   {
     title: "Full-Stack Development",
     icon: <Code2 className="w-5 h-5" />,
     skills: [
+      "Full-Stack SaaS Development",
       "React.js / Next.js",
       "TypeScript / JavaScript",
       "Node.js / Express",
       "Python (FastAPI, Flask)",
-      "Tailwind CSS / ShadcnUI",
-      "RESTful APIs & GraphQL",
+      "REST & GraphQL APIs",
+      "Microservices Architecture",
+      "Authentication (JWT, OAuth, NextAuth)",
+      "State Management (Redux, Zustand)",
+      "Server-Side Rendering (SSR/SSG)",
     ],
   },
   {
     title: "QA Automation & Testing",
     icon: <TestTube className="w-5 h-5" />,
     skills: [
-      "Selenium WebDriver / Grid",
-      "Cypress / Playwright",
+      "Test Automation Framework Design",
+      "AI Testing & LLM Validation",
+      "End-to-End Testing (E2E)",
+      "API Automation Testing",
+      "Performance & Load Testing",
+      "Cross-Browser & Mobile Testing",
+      "Selenium / Cypress / Playwright",
       "Appium (Mobile Testing)",
       "PyTest / Jest / JUnit",
-      "API Testing (Postman)",
-      "BDD (Cucumber/Gherkin)",
+      "BDD (Cucumber / Gherkin)",
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: <Wrench className="w-5 h-5" />,
+    skills: [
+      "AWS (EC2, S3, Lambda)",
+      "CI/CD Pipelines (GitHub Actions)",
+      "Docker & Containerization",
+      "Kubernetes",
+      "Infrastructure as Code (Terraform)",
+      "Monitoring & Logging",
+      "Vercel / Netlify",
+      "Linux / Bash Scripting",
+    ],
+  },
+  {
+    title: "Data & Backend Systems",
+    icon: <Database className="w-5 h-5" />,
+    skills: [
+      "Database Design & Optimization",
+      "PostgreSQL / MySQL",
+      "MongoDB / NoSQL",
+      "Caching (Redis)",
+      "Message Queues (Kafka / RabbitMQ)",
+      "Data Pipelines",
+      "Supabase / Firebase Backend",
+      "Prisma / Drizzle ORM",
+    ],
+  },
+  {
+    title: "AI Product Engineering",
+    icon: <Rocket className="w-5 h-5" />,
+    skills: [
+      "AI Product Development",
+      "Vibe Coding (Rapid AI Prototyping)",
+      "AI SaaS Architecture",
+      "MVP Development for Startups",
+      "Automation-First Development",
+      "End-to-End Product Engineering",
     ],
   },
   {
@@ -49,32 +100,7 @@ const skillCategories = [
       "OWASP ZAP / Burp Suite",
       "Lighthouse / Web Vitals",
       "Load & Stress Testing",
-      "Auth0 / NextAuth / JWT",
       "Security Compliance (SOC2)",
-    ],
-  },
-  {
-    title: "Data & Storage",
-    icon: <Database className="w-5 h-5" />,
-    skills: [
-      "PostgreSQL / MySQL",
-      "MongoDB / NoSQL",
-      "Redis / Caching",
-      "AWS S3 / Cloud Storage",
-      "Firebase / Supabase",
-      "Prisma / Drizzle ORM",
-    ],
-  },
-  {
-    title: "DevOps & Tools",
-    icon: <Wrench className="w-5 h-5" />,
-    skills: [
-      "Docker / Kubernetes",
-      "AWS (EC2, Lambda, S3)",
-      "CI/CD (GitHub Actions)",
-      "Terraform / IaC",
-      "Linux / Bash Scripting",
-      "Vercel / Netlify",
     ],
   },
 ];
@@ -85,10 +111,16 @@ const SkillBadge = motion(Badge);
 export function Skills() {
   return (
     <div className="container mx-auto px-4">
-      <h2 className="text-3xl font-bold mb-8 flex items-center gap-2">
-        <Code2 className="w-6 h-6" />
-        Technical Skills & Expertise
-      </h2>
+      <div className="mb-8">
+        <h2 className="text-3xl font-bold flex items-center gap-2">
+          <Code2 className="w-6 h-6" />
+          Technical Skills & Expertise
+        </h2>
+        <p className="text-muted-foreground mt-2 max-w-3xl">
+          AI Engineer specializing in GenAI, RAG systems, full-stack
+          development, and QA automation using Python and modern AI frameworks.
+        </p>
+      </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {skillCategories.map((category, categoryIndex) => (
           <SkillCard

@@ -100,14 +100,16 @@ export function About({ onOpenWizard }: AboutProps) {
           >
             {/* Split text for staggered reveal */}
             {[
-              "Building",
-              "Intelligent",
-              "GenAI",
-              "Products",
-              "&",
-              "Scalable",
-              "Systems",
-            ].map((word, i) => (
+  "Build",
+  "Production",
+  "Ready",
+  "AI",
+  "Products",
+  "&",
+  "Scalable",
+  "Systems",
+   "With QA"
+].map((word, i) => (
               <motion.span
                 key={i}
                 variants={{
@@ -120,7 +122,7 @@ export function About({ onOpenWizard }: AboutProps) {
                   },
                 }}
                 className={`inline-block mr-2 ${
-                  ["Intelligent", "GenAI", "Products"].includes(word)
+                  ["Ready", "AI", "Products"].includes(word)
                     ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600"
                     : ""
                 }`}
@@ -137,12 +139,12 @@ export function About({ onOpenWizard }: AboutProps) {
             className="text-xl md:text-2xl max-w-2xl leading-relaxed font-medium"
             style={{ color: "hsl(var(--hero-text-secondary))" }}
           >
-            Developing{" "}
+            Helping startups build{" "}
             <span
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-              AI Copilots
+               AI-powered products, SaaS platforms
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-500/50 rounded-full"></span>
             </span>
             ,{" "}
@@ -150,16 +152,16 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-              SaaS Dashboards
+            automate workflows
             </span>
-            , and{" "}
+            ,{" "}
             <span
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-              Custom CRMs
+              Custom CRMs/ERP
             </span>{" "}
-            with React, Next.js, Node.js, Python, and Modern LLMs{" "}
+            and scale with reliable systems.{" "}
             <span className="opacity-90 block mt-2 text-lg">
               for startups, product teams, and agencies.
             </span>
@@ -183,7 +185,7 @@ export function About({ onOpenWizard }: AboutProps) {
               style={{ color: "hsl(var(--hero-text-secondary))" }}
             >
               "Single owner from idea to production—designing, coding, and
-              shipping full‑stack & GenAI systems with QA baked in."
+              shipping full‑stack, AI-powered products & GenAI systems with QA baked in."
             </p>
           </motion.div>
 
