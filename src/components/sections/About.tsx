@@ -152,7 +152,7 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-            automate workflows
+            automate workflows, 
             </span>
             , and{" "}
             <span
@@ -161,7 +161,7 @@ export function About({ onOpenWizard }: AboutProps) {
             >
               Custom CRMs
             </span>{" "}
-            with React, Next.js, Node.js, Python, and Modern LLMs{" "}
+            and scale with reliable systems{" "}
             <span className="opacity-90 block mt-2 text-lg">
               for startups, product teams, and agencies.
             </span>
