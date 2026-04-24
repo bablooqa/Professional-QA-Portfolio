@@ -139,7 +139,7 @@ export function About({ onOpenWizard }: AboutProps) {
             className="text-xl md:text-2xl max-w-2xl leading-relaxed font-medium"
             style={{ color: "hsl(var(--hero-text-secondary))" }}
           >
-            Developing{" "}
+            Helping startups build{" "}
             <span
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
