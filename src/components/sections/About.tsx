@@ -154,7 +154,7 @@ export function About({ onOpenWizard }: AboutProps) {
             >
             automate workflows
             </span>
-            , and{" "}
+            ,{" "}
             <span
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
