@@ -185,7 +185,7 @@ export function About({ onOpenWizard }: AboutProps) {
               style={{ color: "hsl(var(--hero-text-secondary))" }}
             >
               "Single owner from idea to production—designing, coding, and
-              shipping full‑stack & GenAI systems with QA baked in."
+              shipping full‑stack, AI-powered products & GenAI systems with QA baked in."
             </p>
           </motion.div>
 
