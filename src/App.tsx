@@ -152,28 +152,34 @@ function App() {
       >
         <Projects />
       </section>
-      <section className="py-16" ref={sections.SERVICES}>
+      <section className="py-16" id="services" ref={sections.SERVICES} aria-label="Services">
         <Services />
       </section>
       <section
         className="py-16 bg-gradient-to-r from-background to-secondary"
+        id="experience"
         ref={sections.EXPERIENCE}
+        aria-label="Experience"
       >
         <Experience />
       </section>
-      <section className="py-16" ref={sections.SKILLS}>
+      <section className="py-16" id="skills" ref={sections.SKILLS} aria-label="Skills">
         <Skills />
       </section>
       <section
         className="py-16 bg-gradient-to-r from-background to-secondary"
+        id="education"
         ref={sections.EDUCATION}
+        aria-label="Education"
       >
         <Education />
       </section>
       {/* Removed TryBeforeHire Section */}
       <section
         className="py-16 bg-gradient-to-r from-[#6a11cb] to-[#2575fc]"
+        id="contact"
         ref={sections.CONTACT}
+        aria-label="Contact"
       >
         <Contact />
       </section>
