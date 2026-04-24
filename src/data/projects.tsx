@@ -11,6 +11,8 @@ import {
   Figma,
   Bot,
   Chrome,
+  Sparkles,
+  ClipboardCheck,
 } from "lucide-react";
 
 export interface Project {
@@ -27,6 +29,45 @@ export interface Project {
 
 export const projects: Project[] = [
   // --- Development Projects ---
+  {
+    title: "RAG-Powered SaaS Platform",
+    description:
+      "Production SaaS application featuring Retrieval-Augmented Generation (RAG) for context-aware LLM responses. Built with a Python/FastAPI backend, Next.js frontend, Supabase + PostgreSQL persistence, and containerized with Docker. Includes streaming LLM integration, vector search, auth, and many additional supporting technologies.",
+    tags: [
+      "RAG",
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "LLM",
+      "Supabase",
+      "PostgreSQL",
+      "Docker",
+    ],
+    category: "dev",
+    links: { demo: "#", github: "https://github.com/bablooqa" },
+    icon: <Sparkles className="w-8 h-8 text-primary" />,
+  },
+  {
+    title: "AI-Powered QA Test Case Management Platform",
+    description:
+      "Open-source production-ready MVP that helps QA teams generate, manage, and export test cases using LLMs (OpenAI GPT-4 / Claude). FastAPI + Next.js stack with Excel export, real-time updates, and a clean SaaS-style UI. Frontend built with React 18, TypeScript, Vite, Tailwind, shadcn/ui (Radix primitives), Framer Motion, React Hook Form + Zod, and Lucide icons.",
+    tags: [
+      "Open Source",
+      "FastAPI",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "shadcn/ui",
+      "LLM",
+    ],
+    category: "dev",
+    links: {
+      demo: "https://github.com/bablooqa/ai-qa-testcase-platform",
+      github: "https://github.com/bablooqa/ai-qa-testcase-platform",
+    },
+    icon: <ClipboardCheck className="w-8 h-8 text-emerald-500" />,
+  },
   {
     title: "GenAI Chatbot Platform",
     description:
