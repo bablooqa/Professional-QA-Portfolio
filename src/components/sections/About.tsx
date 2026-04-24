@@ -100,14 +100,14 @@ export function About({ onOpenWizard }: AboutProps) {
           >
             {/* Split text for staggered reveal */}
             {[
-              "Building",
-              "Intelligent",
-              "GenAI",
-              "Products",
-              "&",
-              "Scalable",
-              "Systems",
-            ].map((word, i) => (
+  "Build",
+  "Production-Ready",
+  "AI",
+  "Products",
+  "&",
+  "Scalable",
+  "Systems",
+].map((word, i) => (
               <motion.span
                 key={i}
                 variants={{
