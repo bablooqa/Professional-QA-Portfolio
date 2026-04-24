@@ -195,7 +195,7 @@ function App() {
           © 2026 All rights reserved.
         </p>
         <p className="text-xs text-muted-foreground mt-1">
-          Designed &amp; developed by Babloo. v3.0.0
+          Designed &amp; developed by Babloo Kumar. v3.0.0
         </p>
       </motion.footer>
 
