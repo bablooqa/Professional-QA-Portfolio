@@ -159,7 +159,7 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-              Custom CRMs
+              Custom CRMs/ERP
             </span>{" "}
             and scale with reliable systems{" "}
             <span className="opacity-90 block mt-2 text-lg">
