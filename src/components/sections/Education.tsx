@@ -64,9 +64,24 @@ export function Education() {
               <div className="space-y-4">
                 {[
                   {
-                    title: "Python Development",
-                    org: "Naresh i Technologies",
-                    year: "2019"
+                    title: "GenAI / ML Engineer",
+                    org: "Coursera",
+                    year: "2024"
+                  },
+                  {
+                    title: "Prompt Engineering",
+                    org: "Coursera",
+                    year: "2024"
+                  },
+                  {
+                    title: "Full-Stack MERN Developer",
+                    org: "Coursera",
+                    year: "2023"
+                  },
+                  {
+                    title: "Figma & Playwright (JS/TS)",
+                    org: "Udemy",
+                    year: "2022"
                   },
                   {
                     title: "QA / Manual / Automation Test Engineer",
@@ -74,9 +89,9 @@ export function Education() {
                     year: "2020"
                   },
                   {
-                    title: "UI/UX Design with Figma",
-                    org: "Udemy",
-                    year: "2021"
+                    title: "Python & Node.js",
+                    org: "Naresh i Technologies",
+                    year: "2019"
                   }
                 ].map((cert, index) => (
                   <div key={index} className="flex items-start gap-3 group p-3 rounded-lg hover:bg-primary/5 transition-colors">
