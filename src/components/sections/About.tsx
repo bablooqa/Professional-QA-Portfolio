@@ -144,7 +144,7 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-              AI Copilots
+               AI-powered products
               <span className="absolute bottom-0 left-0 w-full h-[2px] bg-cyan-500/50 rounded-full"></span>
             </span>
             ,{" "}
@@ -152,7 +152,7 @@ export function About({ onOpenWizard }: AboutProps) {
               className="font-bold relative inline-block"
               style={{ color: "hsl(var(--hero-text-primary))" }}
             >
-              SaaS Dashboards
+            automate workflows
             </span>
             , and{" "}
             <span
